@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CustomConsole\CustomConsole.h">
+    <ClInclude Include="CME\Render\Render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CME\CustomConsole\CustomConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
