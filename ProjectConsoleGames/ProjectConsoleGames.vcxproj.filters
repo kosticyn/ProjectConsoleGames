@@ -15,10 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CME\Render\Render.h">
+    <ClInclude Include="CME\CustomConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CME\CustomConsole\CustomConsole.h">
+    <ClInclude Include="CME\Render.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CME\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CME\TimeStep.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

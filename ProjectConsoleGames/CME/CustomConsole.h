@@ -6,14 +6,10 @@ namespace CME
     class CustomConsole
     {
     public:
-        explicit CustomConsole() : handle_original_(GetStdHandle(STD_OUTPUT_HANDLE)),
-            handle_console_(CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0,
-                NULL, CONSOLE_TEXTMODE_BUFFER, NULL)) {}
+        explicit CustomConsole() : handle_console_(GetStdHandle(STD_OUTPUT_HANDLE)) {}
 
-        explicit CustomConsole(LPCTSTR title, short width, short height, short pixel_size)
-            : handle_original_(GetStdHandle(STD_OUTPUT_HANDLE)),
-            handle_console_(CreateConsoleScreenBuffer(GENERIC_READ | GENERIC_WRITE, 0,
-                NULL, CONSOLE_TEXTMODE_BUFFER, NULL))
+        explicit CustomConsole(LPCTSTR title, short width, short height, short pixel_size) : 
+            handle_console_(GetStdHandle(STD_OUTPUT_HANDLE))            
         {
             ConsoleTitle(title);
             ConsoleSize(width, height, pixel_size);
