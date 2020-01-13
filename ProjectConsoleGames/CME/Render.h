@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <memory>
+#include <string>
 
 namespace CME
 {
@@ -71,6 +72,15 @@ namespace CME
 
         }
 
+        void DrawString(short x, short y, std::wstring s, short color)
+        {
+            for (short i = 0; i < s.size(); i++)
+            {
+                buffer_next_[y * width_ + x + i].Char.UnicodeChar = s[i];
+                buffer_next_[y * width_ + x + i].Attributes = color;
+            }
+        }
+   
         void Display()
         {
             WriteConsoleOutput(handle_console_, buffer_next_.get(), buffer_info_.dwSize, { 0, 0 }, &buffer_info_.srWindow);

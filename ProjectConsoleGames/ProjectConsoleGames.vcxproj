@@ -124,13 +124,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CME\CME.h" />
     <ClInclude Include="CME\CustomConsole.h" />
     <ClInclude Include="CME\Input.h" />
     <ClInclude Include="CME\Render.h" />
     <ClInclude Include="CME\TimeStep.h" />
+    <ClInclude Include="SNAKE\Intro.h" />
+    <ClInclude Include="SNAKE\IState.h" />
+    <ClInclude Include="SNAKE\Menu.h" />
+    <ClInclude Include="SNAKE\StateManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SNAKE\StateManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -27,9 +27,27 @@
     <ClInclude Include="CME\TimeStep.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SNAKE\IState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\Intro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CME\CME.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SNAKE\StateManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
