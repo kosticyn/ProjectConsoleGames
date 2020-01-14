@@ -40,7 +40,7 @@ public:
 
         if (pos_y < 5)
         {
-            manager.ChangeState(std::make_unique<Menu>());
+            manager.ChangeState(std::make_unique<MenuState>());
         }
     }
 
@@ -48,7 +48,7 @@ public:
     {
         if (input->IsPressedKey(CME::CONTROL::KEY_ENTER))
         {
-            manager.ChangeState(std::make_unique<Menu>());
+            manager.ChangeState(std::make_unique<MenuState>());
         }
     }
 

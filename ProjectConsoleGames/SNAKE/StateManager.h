@@ -9,10 +9,10 @@ class StateManager
 {
 public:
     StateManager();
-    virtual void Update(float dt);
-    virtual void InputHandle(std::unique_ptr<CME::Input>& input);
-    virtual void Render(std::unique_ptr<CME::Render>& render);
-    virtual void ChangeState(std::unique_ptr<IState> state);
+    void Update(float dt);
+    void InputHandle(std::unique_ptr<CME::Input>& input);
+    void Render(std::unique_ptr<CME::Render>& render);
+    void ChangeState(std::unique_ptr<IState> state);
 private:
     std::unique_ptr<IState> state_;
 };
