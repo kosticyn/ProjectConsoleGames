@@ -28,7 +28,6 @@ namespace CME
         };
     }
 
-
     class Render
     {
     public:
@@ -80,7 +79,7 @@ namespace CME
                 buffer_next_[y * width_ + x + i].Attributes = color;
             }
         }
-   
+
         void Display()
         {
             WriteConsoleOutput(handle_console_, buffer_next_.get(), buffer_info_.dwSize, { 0, 0 }, &buffer_info_.srWindow);

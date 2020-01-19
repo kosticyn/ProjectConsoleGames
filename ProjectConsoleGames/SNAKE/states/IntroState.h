@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "IState.h"
-#include "Menu.h"
+#include "MenuState.h"
 
 
 class Intro : public IState
@@ -46,7 +46,7 @@ public:
 
     void HandleInput(StateManager& manager, p_input& input) override
     {
-        if (input->IsPressedKey(CME::CONTROL::KEY_ENTER))
+        if (input->IsHitKey(CME::CONTROL::KEY_ENTER))
         {
             manager.ChangeState(std::make_unique<MenuState>());
         }

@@ -1,62 +1,15 @@
 #pragma once
 
-#include "../CME/CME.h"
+#include "../../CME/CME.h"
 #include "IState.h"
+#include "GameState.h"
+#include "Menu.h"
 
-class Menu
-{
-public:
-    Menu() : current_select_(0)
-    {}
-    
-    void AddItem(std::wstring name)
-    {
-        items_.push_back(name);
-    }
-
-    int Size()
-    {
-        return items_.size();
-    }
-
-    int CurrentSelect()
-    {
-        return current_select_;
-    }
-
-    void CurrentSelect(int x)
-    {
-        current_select_ = x;
-    }
-
-    std::wstring Item(int i)
-    {
-        return items_[i];
-    }
-
-    void Up()
-    {
-        current_select_--;
-        if (current_select_ < 0)
-            current_select_ = items_.size() - 1;
-    }
-
-    void Down()
-    {
-        current_select_++;
-        if (current_select_ > items_.size() - 1)
-            current_select_ = 0;
-    }
-
-private:
-    std::vector<std::wstring> items_;
-    int current_select_;
-};
 
 class MenuState : public IState
 {
 public:
-    MenuState()
+    MenuState() : menu_(std::make_unique<Menu>())
     {
         color_ = 1;
   
@@ -71,9 +24,9 @@ public:
             {1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1},
         };
 
-        menu.AddItem(L"START");
-        menu.AddItem(L"TOP10");
-        menu.AddItem(L"QUIT");
+        menu_->AddItem(L"START");
+        menu_->AddItem(L"TOP10");
+        menu_->AddItem(L"QUIT");
     }
 
     void Update(StateManager& manager, float dt) override
@@ -87,17 +40,17 @@ public:
     void HandleInput(StateManager& manager, p_input& input) override
     {
         if (input->IsHitKey(CME::CONTROL::KEY_UP))
-            menu.Up();
+            menu_->Up();
         
         if (input->IsHitKey(CME::CONTROL::KEY_DOWN))
-            menu.Down();
+            menu_->Down();
 
         if (input->IsHitKey(CME::CONTROL::KEY_ENTER))
         {
-            switch (menu.CurrentSelect())
+            switch (menu_->CurrentSelect())
             {
             case(0):
-                //change state to play game
+                manager.ChangeState(std::make_unique<GameState>());
                 break;
             case(1):
                 ////change state to top10
@@ -138,20 +91,20 @@ public:
         }
 
         //menu
-        for (size_t i = 0; i < menu.Size(); i++)
+        for (size_t i = 0; i < menu_->Size(); i++)
         {
-            if (menu.CurrentSelect() == i)
+            if (menu_->CurrentSelect() == i)
             {
-                r->DrawString(22, 20 + i*2, menu.Item(i), CME::COLOR::BLUE);
+                r->DrawString(22, 20 + i*2, menu_->Item(i), CME::COLOR::BLUE);
             }
             else
             {
-                r->DrawString(22, 20 + i*2, menu.Item(i), CME::COLOR::GREEN);
+                r->DrawString(22, 20 + i*2, menu_->Item(i), CME::COLOR::GREEN);
             }
         }
     }
 private:
     std::vector<std::vector<int>> logo_;
     float color_;
-    Menu menu;
+    std::unique_ptr<Menu> menu_;
 };

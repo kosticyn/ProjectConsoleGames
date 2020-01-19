@@ -129,14 +129,20 @@
     <ClInclude Include="CME\Input.h" />
     <ClInclude Include="CME\Render.h" />
     <ClInclude Include="CME\TimeStep.h" />
-    <ClInclude Include="SNAKE\Intro.h" />
-    <ClInclude Include="SNAKE\IState.h" />
-    <ClInclude Include="SNAKE\Menu.h" />
-    <ClInclude Include="SNAKE\StateManager.h" />
+    <ClInclude Include="SNAKE\obj\Fruit.h" />
+    <ClInclude Include="SNAKE\obj\Snake.h" />
+    <ClInclude Include="SNAKE\states\GameOver.h" />
+    <ClInclude Include="SNAKE\states\GameState.h" />
+    <ClInclude Include="SNAKE\states\IntroState.h" />
+    <ClInclude Include="SNAKE\states\IState.h" />
+    <ClInclude Include="SNAKE\states\Menu.h" />
+    <ClInclude Include="SNAKE\states\MenuState.h" />
+    <ClInclude Include="SNAKE\states\StateManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SNAKE\StateManager.cpp" />
+    <ClCompile Include="SNAKE\states\GameOver.cpp" />
+    <ClCompile Include="SNAKE\states\StateManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

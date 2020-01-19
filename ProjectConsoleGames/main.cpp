@@ -2,7 +2,9 @@
 #include "CME/Render.h"
 #include "CME/Input.h"
 #include "CME/TimeStep.h"
-#include "SNAKE/Intro.h"
+#include "SNAKE/states/IntroState.h"
+
+#include "SNAKE/obj/snake.h"
 
 using namespace CME;
 
@@ -15,7 +17,7 @@ struct Entity
 
 int main()
 {
-    auto window = std::make_unique<CustomConsole>(L"Custom console", 50, 50, 8);
+    auto window = std::make_unique<CustomConsole>(L"Snake!", 50, 50, 8);
     auto render = std::make_unique<Render>(window->GetHandle());
     auto input = std::make_unique<Input>();
     auto timer = std::make_unique<TimeStep>();

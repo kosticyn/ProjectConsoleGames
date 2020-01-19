@@ -1,6 +1,6 @@
 #include "StateManager.h"
 #include "IState.h"
-#include "Intro.h"
+#include "IntroState.h"
 
 StateManager::StateManager() : state_(std::make_unique<Intro>()) 
 {}

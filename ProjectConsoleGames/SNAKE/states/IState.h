@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../CME/CME.h"
+#include "../../CME/CME.h"
 #include "StateManager.h"
 
 using p_input = std::unique_ptr<CME::Input>;

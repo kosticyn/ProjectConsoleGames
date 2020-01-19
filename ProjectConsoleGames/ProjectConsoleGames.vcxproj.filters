@@ -27,19 +27,34 @@
     <ClInclude Include="CME\TimeStep.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SNAKE\IState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SNAKE\Intro.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CME\CME.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SNAKE\Menu.h">
+    <ClInclude Include="SNAKE\states\StateManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SNAKE\StateManager.h">
+    <ClInclude Include="SNAKE\states\IState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\states\GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\states\IntroState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\states\MenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\obj\Snake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\obj\Fruit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\states\GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SNAKE\states\Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +62,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SNAKE\StateManager.cpp">
+    <ClCompile Include="SNAKE\states\StateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SNAKE\states\GameOver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

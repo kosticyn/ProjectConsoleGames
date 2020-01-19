@@ -2,91 +2,134 @@
 
 #include <list>
 #include <utility>
+#include "Fruit.h"
 
-
+using part = std::pair<short, short>;
+enum class DIRECTION { UP = 0, DOWN, LEFT, RIGHT };
 
 class Snake
 {
 public:
     Snake() 
     {
+        //init snake
         snake_.push_back({ 25,25 });
         snake_.push_back({ 25,26 });
         snake_.push_back({ 25,27 });
-        dir_ = UP;
+        snake_.push_back({ 25,28 });
+        DIR_ = DIRECTION::UP;
+        speed_ = 20;
         step_ = 0;
-        alive_ = true;
     }
 
-    const std::list<std::pair<short, short>>& GetSnake() const noexcept
+    void Update(float dt)
+    {
+        step_ += speed_ * dt;
+
+        if (step_ > 1)
+        {
+            step_ = 0;
+
+            auto head = snake_.front();
+            snake_.pop_back();
+
+            if (DIR_ == DIRECTION::UP)
+            {
+                head.second -= 1;
+            }
+
+            if (DIR_ == DIRECTION::DOWN)
+            {
+                head.second += 1;
+            }
+
+            if (DIR_ == DIRECTION::LEFT)
+            {
+                head.first -= 1;
+            }
+
+            if (DIR_ == DIRECTION::RIGHT)
+            {
+                head.first += 1;
+            }
+
+            snake_.push_front(head);
+        }
+    }
+
+    void MoveUP()
+    {
+        if (DIR_ != DIRECTION::DOWN)
+        {
+            DIR_ = DIRECTION::UP;
+        }
+    }
+
+    void MoveDOWN()
+    {
+        if (DIR_ != DIRECTION::UP)
+        {
+            DIR_ = DIRECTION::DOWN;
+        }
+    }
+
+    void MoveLEFT()
+    {
+        if (DIR_ != DIRECTION::RIGHT)
+        {
+            DIR_ = DIRECTION::LEFT;
+        }
+    }
+
+    void MoveRIGHT()
+    {
+        if (DIR_ != DIRECTION::LEFT)
+        {
+            DIR_ = DIRECTION::RIGHT;
+        }
+    }
+
+    const std::list<part>& GetSnake() const
     {
         return snake_;
     }
 
-    void Move(float dt) noexcept
+    int Eat(std::unique_ptr<Fruit>& f)
     {
-        step_ += 1 * speed_ * dt;
-        
-        if (step_ > 1)
+        if (snake_.front() == f->Position())
         {
-            step_ = 0;
-            auto front = snake_.front();
-            snake_.pop_back();
+            f->Position() = snake_.back();
+            snake_.push_back(f->Position());
 
-            switch (dir_)
+            bool available_position = false;
+            int free = 0;
+
+            while (!available_position)
             {
-            case(UP):
-                front.second -= 1;
-                break;
-            case(DOWN):
-                front.second += 1;
-                break;
-            case(LEFT):
-                front.first -= 1;
-                break;
-            case(RIGHT):
-                front.first += 1;
-                break;
-            default:
-                break;
+                f->Create();
+                for (auto p : snake_)
+                {
+                    if (!(p == f->Position()))
+                    {
+                        free++;
+                    }
+
+                    if (free == snake_.size() - 1)
+                    {
+                        available_position = true;
+                    }
+                }
             }
-            snake_.push_front(front);
+            return 1;
         }
-    }
 
-    void DirUP() noexcept
-    {
-        if (dir_ !=DOWN)
-            dir_ = UP;
-    }
-
-    void DirDOWN() noexcept
-    {
-        if (dir_ != UP)
-            dir_ = DOWN;
-    }
-
-    void DirLEFT() noexcept
-    {
-        if (dir_ != RIGHT)
-            dir_ = LEFT;
-    }
-    
-    void DirRIGHT() noexcept
-    {
-        if (dir_ != LEFT)
-            dir_ = RIGHT;
-    }
-    
-    void IncSpeed() noexcept
-    {
-        speed_++;
+        return 0;
     }
 
 private:
-    int speed_ = 10;
-    std::list<std::pair<short, short>> snake_;
-    enum direction { UP = 0, DOWN, LEFT, RIGHT } dir_;
+    std::list<part> snake_;
+    DIRECTION DIR_;
+    int speed_;
     float step_;
-    bool alive_;
+
 };
